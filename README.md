@@ -16,8 +16,8 @@ Each company has a CEO agent that doesn't just delegate tasks — it learns from
 │  React Dashboard (Convergence UI)                   │
 │  Companies · Agents · Goals · Costs · CEO Insights  │
 ├─────────────────────────────────────────────────────┤
-│  Express API + WebSocket (Real-time)                │
-│  Routes · Services · Adapters · Governance          │
+│  Hono API + Zod-OpenAPI + WebSocket (Real-time)     │
+│  Routes · Services · Adapters · BullMQ Queues       │
 ├─────────────────────────────────────────────────────┤
 │  CEO Engine (per company)                           │
 │  ┌───────────────────────────────────────────────┐  │
@@ -38,10 +38,14 @@ Each company has a CEO agent that doesn't just delegate tasks — it learns from
 
 ## Stack
 
-- **UI**: React 19 + Vite + TailwindCSS 4 + Radix UI
-- **API**: Node.js + Express 5 + TypeScript
-- **ORM**: Drizzle ORM
-- **DB**: PGlite (embedded) or PostgreSQL
+- **UI**: React 19 + Vite + TailwindCSS 4 + shadcn/ui + TanStack (Router/Query/Table)
+- **API**: Hono + @hono/zod-openapi + TypeScript (auto-generated OpenAPI docs at /reference)
+- **ORM**: Drizzle ORM + drizzle-zod (schema as single source of truth)
+- **DB**: PGlite (embedded, zero-config) → PostgreSQL (production)
+- **Queues**: BullMQ + Redis (heartbeat scheduler, experiment runner, CEO tasks)
+- **State**: Zustand (client) + TanStack Query (server)
+- **Charts**: Tremor + Recharts
+- **Logging**: Pino (structured JSON)
 - **CEO Engine**: Python (Hermes core) + Node bridge
 - **Models**: Ollama local (qwen3.5, glm-4.7-flash) + Claude API + any OpenAI-compatible
 
