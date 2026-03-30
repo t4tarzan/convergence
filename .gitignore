@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env
+.env.local
+*.db
+*.db-journal
+.seaclip/
+.convergence/
+.DS_Store
+*.tsbuildinfo

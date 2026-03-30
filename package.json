@@ -1,0 +1,18 @@
+{
+  "name": "convergence",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Autonomous company orchestration with self-evolving CEO agents",
+  "scripts": {
+    "dev": "pnpm --filter @convergence/server dev & pnpm --filter @convergence/ui dev",
+    "dev:server": "pnpm --filter @convergence/server dev",
+    "dev:ui": "pnpm --filter @convergence/ui dev",
+    "build": "pnpm --filter @convergence/shared build && pnpm --filter @convergence/db build && pnpm --filter @convergence/server build && pnpm --filter @convergence/ui build",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "pnpm -r lint"
+  },
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=9"
+  }
+}
